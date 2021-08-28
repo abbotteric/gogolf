@@ -1,0 +1,27 @@
+Equations of motion
+
+1. object under gravity
+
+f(t) = c
+f'(t) = (dc)t + c  # dc = rate of change in position = velocity (v)
+f''(t) = 1/2(dv)t^2 + vt + c #dv = rate of change of velocity = acceleration (a)
+
+a = 9.8 m/s/s
+
+Initial conditions:
+1. Ball shot straight up at 10m/s
+2. Normal gravity
+3. No air resistance
+4. Started at position of 0.
+
+dv = -9.8m/s/s
+v = 10m/s
+
+f''(t) = position of ball as a function of time (t)
+f''(t) = 1/2(-9.8)t^2 + 10t + 0
+
+
+2. Coordinate mapping
+
+worldSpace.x/worldSpace.max.x = imageSpace.x/imageSpace.max.x
+imageSpace.x = imageSpace.max.x (worldSpace.x/worldSpace.max.x)
