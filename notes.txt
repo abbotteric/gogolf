@@ -47,6 +47,9 @@ F_drag = 1/2*p*v^2*C_d*A
   C_d = coefficient of drag ~ 0.5 for an average ball
   A = cross section normal to drag force = pi * 0.02135^2 = 0.00143 m^2
 
+Drag direction
+
+
 F_g = m*G = 0.04593 * -9.8 =  -0.4305 N
 
 Force calculation for each step:
@@ -54,4 +57,12 @@ Force calculation for each step:
 2. Drag force
 3. Gravitational force
 
+4. Spin forces (Magnus effect)
+ ** Coming Soon **
 
+5. Visualizations w/ and w/o drag
+6. Example w/ dt = 0.1 mostly working then show what
+happens when changing to 0.01
+  a. doesn't just increase resolution as expected because
+    impact force needs to be spread out over longer amount of 
+    time. Refactor to show that.
