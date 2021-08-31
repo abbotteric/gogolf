@@ -59,13 +59,23 @@ Force calculation for each step:
 
 4. Spin forces (Magnus effect)
   a. start with just backspin
- ** Coming Soon **
+
+  v_ang units are radians/sec
+
+  S = (v_ang * R_gb)/m_v
+  C_l = -3.25*S^2 + 1.99S
+  F_l = 0.5 * C_l * v^2 * A * p
 
 5. Visualizations w/ and w/o drag
+
 6. Example w/ dt = 0.1 mostly working then show what
 happens when changing to 0.01
   a. doesn't just increase resolution as expected because
     impact force needs to be spread out over longer amount of 
     time. Refactor to show that.
+
 7. Think about Reynolds number and the impact of velocity
   on the coefficients
+  a. N_re = (p * v * 2 * R_gb)/viscosity_air
+
+8. Calculating spin and force based on friction and impact dynamics

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -19,12 +18,26 @@ type Ball struct {
 }
 
 /*
+helper functions
+*/
+func drag_from_reynolds(N_re float64) float64 {
+	// this is a dumb function to approximate drag coefficient changes
+	// as a function of Reynolds number as per reference #2
+	if N_re < 50000 {
+		return 0.65
+	} else if N_re > 75000 {
+		return 0.28
+	}
+	return -0.0000148*N_re + 1.39
+}
+
+/*
 constants
 */
 const M_gb = .04593     //kg
 const R_gb = .04267 / 2 //m
 const rho = 1.225       //density of air at sea level
-const C_d = 0.35        //rough average drag coefficient of a golf ball
+var kin_visc = 1.48 * math.Pow(10, -5)
 
 /*
 initial conditions
@@ -39,13 +52,16 @@ func step(b Ball, dt float64, impact_force Vector, backspin_v_ang float64) Ball 
 	var v_new Vector
 	var f_calc = impact_force
 	var m_v = math.Sqrt(math.Pow(b.vel.x, 2) + math.Pow(b.vel.y, 2)) // magnitude of the velocity
-	fmt.Printf("%f\n", m_v)
 
 	// gravity
 	f_calc.y += M_gb * G
 
 	if m_v != 0 { //some forces are only applicable if the ball is moving
 		// drag
+		// calculate C_d based on N_re
+		N_re := (m_v * 2 * R_gb) / kin_visc
+		C_d := drag_from_reynolds(N_re)
+
 		// magnitude of the drag
 		var m_drag = 0.5 * rho * math.Pow(m_v, 2) * C_d * (math.Pi * R_gb * R_gb)
 		var f_drag_x = m_drag * math.Sin(math.Atan(b.vel.x/b.vel.y))
@@ -65,10 +81,9 @@ func step(b Ball, dt float64, impact_force Vector, backspin_v_ang float64) Ball 
 
 		// backspin
 		spin_factor := (backspin_v_ang * R_gb) / m_v
-		C_l := -3.25*math.Pow(spin_factor, 2) + 1.99*spin_factor
+		C_l := -3.25*math.Pow(spin_factor, 2) + 1.99*spin_factor //experimentally determined
 		F_l := 0.5 * C_l * math.Pow(m_v, 2) * (math.Pi * R_gb * R_gb) * rho
 		f_calc.y += F_l
-		fmt.Printf("1 - %f - %f - %f\n", spin_factor, C_l, F_l)
 	}
 
 	// velocity calculation

@@ -1,2 +1,5 @@
-[The reverse Magnus effect in golf balls]
+1) [The reverse Magnus effect in golf balls]
 https://link.springer.com/article/10.1007/s12283-020-0318-1
+
+2) [Drag coefficient as function of Re]
+https://www.scirp.org/journal/paperinformation.aspx?paperid=85529
