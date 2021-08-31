@@ -48,7 +48,7 @@ F_drag = 1/2*p*v^2*C_d*A
   A = cross section normal to drag force = pi * 0.02135^2 = 0.00143 m^2
 
 Drag direction
-
+on iPad notes
 
 F_g = m*G = 0.04593 * -9.8 =  -0.4305 N
 
@@ -58,6 +58,7 @@ Force calculation for each step:
 3. Gravitational force
 
 4. Spin forces (Magnus effect)
+  a. start with just backspin
  ** Coming Soon **
 
 5. Visualizations w/ and w/o drag
@@ -66,3 +67,5 @@ happens when changing to 0.01
   a. doesn't just increase resolution as expected because
     impact force needs to be spread out over longer amount of 
     time. Refactor to show that.
+7. Think about Reynolds number and the impact of velocity
+  on the coefficients
