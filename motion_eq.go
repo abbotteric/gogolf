@@ -17,11 +17,6 @@ type worldPoint struct {
 	y float64
 }
 
-type Iv struct {
-	x float64
-	y float64
-}
-
 type worldSize struct {
 	width  float64
 	height float64
@@ -65,8 +60,8 @@ const scale = 10.0
 main
 */
 func main() {
-	var world = worldSize{200, 50}
-	var img = generate_image_file(world)
+	world := worldSize{200, 50}
+	img := generate_image_file(world)
 
 	t := 0.0
 
