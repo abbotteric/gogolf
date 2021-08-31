@@ -77,5 +77,6 @@ happens when changing to 0.01
 7. Think about Reynolds number and the impact of velocity
   on the coefficients
   a. N_re = (p * v * 2 * R_gb)/viscosity_air
+  b. C_d = 1.91e-11*N_re^2 + 5.4e-6*N_re + 0.56 //this is incorrect for Re in our range
 
 8. Calculating spin and force based on friction and impact dynamics

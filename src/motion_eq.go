@@ -56,7 +56,7 @@ func rpm_2_v_ang(rpm float64) float64 {
 /*
 	Set up some constants
 */
-const dt = 0.1
+const dt = 0.09
 const G = -9.8
 const scale = 10.0
 
@@ -89,6 +89,6 @@ func main() {
 		start = false
 	}
 
-	f, _ := os.Create("image.png")
+	f, _ := os.Create("../image.png")
 	png.Encode(f, img)
 }
