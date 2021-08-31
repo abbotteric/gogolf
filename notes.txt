@@ -25,3 +25,33 @@ f''(t) = 1/2(-9.8)t^2 + 10t + 0
 
 worldSpace.x/worldSpace.max.x = imageSpace.x/imageSpace.max.x
 imageSpace.x = imageSpace.max.x (worldSpace.x/worldSpace.max.x)
+
+3. Force-based calculation
+
+Mass of golf ball = 0.04593 kg
+Radius of golf ball = 0.02135m
+
+7i
+ball speed: 118mph * 0.447 = 52.75m/s
+impact duration = 0.1s
+acceleration = 52.75/0.1 = 527.5m/s/s
+force = 0.04593 * 527.5 = 24.228 N
+
+launch angle = 22° = 22/180*pi = 0.384r
+vertical component = 24.228 * sin(0.384) = 9.076 N
+horizontal component = 24.228 * cos(0.384)  22.464 N
+
+F_drag = 1/2*p*v^2*C_d*A
+  p = fluid density ~ 1.225 kg/m^3
+  v = velocity
+  C_d = coefficient of drag ~ 0.5 for an average ball
+  A = cross section normal to drag force = pi * 0.02135^2 = 0.00143 m^2
+
+F_g = m*G = 0.04593 * -9.8 =  -0.4305 N
+
+Force calculation for each step:
+1. Impact force
+2. Drag force
+3. Gravitational force
+
+
