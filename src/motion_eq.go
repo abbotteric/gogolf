@@ -53,6 +53,14 @@ func rpm_2_v_ang(rpm float64) float64 {
 	return (rpm * 2 * math.Pi) / 60
 }
 
+func velocity_from_launch_and_speed(launch_angle float64, ball_speed float64) Vector {
+	//for convenience it will take launch angle in degrees and ball speed in mph
+	la_rad := math.Pi * launch_angle / 180
+	speed_si := ball_speed * 0.447
+
+	return Vector{speed_si * math.Cos(la_rad), speed_si * math.Sin(la_rad)}
+}
+
 /*
 	Set up some constants
 */
@@ -66,7 +74,11 @@ main
 func main() {
 	world := worldSize{200, 50}
 	img := generate_image_file(world)
-	backspin := 6000
+	backspin := 2686
+	ball := Ball{
+		pos: Vector{0, 0},
+		vel: velocity_from_launch_and_speed(10.9, 167),
+	}
 
 	t := 0.0
 
@@ -75,7 +87,7 @@ func main() {
 	start := true
 	for start || (t > 0 && nb.pos.y >= 0) {
 		if start {
-			nb = step(ball, dt, impact, rpm_2_v_ang(float64(backspin)))
+			nb = step(ball, dt, Vector{0, 0}, rpm_2_v_ang(float64(backspin)))
 		} else {
 			nb = step(nb, dt, Vector{0, 0}, rpm_2_v_ang(float64(backspin)))
 		}
