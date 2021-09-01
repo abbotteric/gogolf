@@ -42,10 +42,6 @@ var kin_visc = 1.48 * math.Pow(10, -5)
 /*
 initial conditions
 */
-var ball = Ball{
-	pos: Vector{0, 0},
-	vel: Vector{0, 0},
-}
 var impact = Vector{22.464, 9.076}
 
 func step(b Ball, dt float64, impact_force Vector, backspin_v_ang float64) Ball {
